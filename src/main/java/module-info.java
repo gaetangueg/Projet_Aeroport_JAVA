@@ -6,6 +6,7 @@ module com.example.ensea3dtp {
     opens com.example.ensea3dtp.Travail_Maison to javafx.graphics;
 
     // Exporte les packages contenant des classes que tu veux rendre accessibles
+    exports com.example.ensea3dtp.Earth; // Exporte le package Earth
     exports com.example.ensea3dtp.Aeroport;
     exports com.example.ensea3dtp.World;
 }
