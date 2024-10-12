@@ -44,8 +44,7 @@ public class Interface_Earth extends Application {
                 mousePosX = event.getSceneX();
                 mousePosY = event.getSceneY();
 
-                // Déplacer la caméra le long de l'axe Z
-                double deltaX = mousePosX - mouseOldX;
+                // Déplacer la caméra le long de l'axe Z pour faire un zoom/dézoom
                 double deltaY = mousePosY - mouseOldY;
 
                 camera.getTransforms().add(new Translate(0, 0, deltaY * zoomSpeed));
@@ -55,7 +54,7 @@ public class Interface_Earth extends Application {
         });
 
         // Configure la fenêtre principale (Stage)
-        primaryStage.setTitle("Affichage de la Terre avec interactions");
+        primaryStage.setTitle("Affichage de la Terre avec zoom possible");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
