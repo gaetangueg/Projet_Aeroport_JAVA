@@ -87,8 +87,9 @@ public class Interface_Earth extends Application {
                         if (nearestAirport != null) {
                             // Affichage de l'aéroport le plus proche dans la console
                             System.out.println("Aéroport le plus proche : " + nearestAirport);
-                        }
-                        else {
+                            // Afficher une sphère rouge sur l'aéroport le plus proche
+                            earth.displayRedSphere(nearestAirport);
+                        } else {
                             System.out.println("Aucun aéroport trouvé à proximité.");
                         }
                     } else {
