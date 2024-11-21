@@ -1,13 +1,13 @@
 package com.example.ensea3dtp.Flight;
 
-import java.time.LocalDateTime;
+import java.time.LocalDateTime;// Import pour utiliser les objets de date et heure
 
 public class Flight {
-    private String airLineCode;
-    private String airlineName;
-    private LocalDateTime arrivalTime;
-    private LocalDateTime departureTime;
-    private int number;
+    private String airLineCode;// Code de la compagnie aérienne
+    private String airlineName;// Nom complet de la compagnie aérienne
+    private LocalDateTime arrivalTime;// Heure d'arrivée prévue
+    private LocalDateTime departureTime;// Heure de départ prévue
+    private int number;// Numéro du vol
 
     // Constructeur
     public Flight(String airLineCode, String airlineName, LocalDateTime departureTime, LocalDateTime arrivalTime, int number) {
