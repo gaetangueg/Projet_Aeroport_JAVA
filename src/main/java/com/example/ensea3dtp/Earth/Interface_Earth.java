@@ -78,9 +78,9 @@ public class Interface_Earth extends Application {
 
                         // Conversion des coordonnées en longitude et latitude
                         double longitude = 360 * (x - 0.5);
-                        double latitude = 2 * Math.toDegrees(Math.atan(Math.exp((0.5 - y) / 0.2678))) - 90;
-
-                        System.out.println("Latitude : " + latitude + ", Longitude : " + longitude);
+                        //double latitude = 2 * Math.toDegrees(Math.atan(Math.exp((0.5 - y) / 0.2678))) - 90;
+                        double latitude = 180* (0.5 - y);
+                                System.out.println("Latitude : " + latitude + ", Longitude : " + longitude);
 
                         // Recherche de l'aéroport le plus proche
                         Aeroport nearestAirport = world.findNearestAirport(longitude, latitude);
