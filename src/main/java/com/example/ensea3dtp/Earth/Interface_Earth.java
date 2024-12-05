@@ -6,7 +6,9 @@ import com.example.ensea3dtp.ApiFlightManager.ApiFlightManager;
 import com.example.ensea3dtp.JsonFlightFillerOracle.JsonFlightFillerOracle;
 import com.example.ensea3dtp.Flight.Flight;
 
+import com.example.ensea3dtp.YellowBallUpdater.YellowBallUpdater;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.geometry.Point2D;
 import javafx.scene.PerspectiveCamera;
 import javafx.scene.Scene;
@@ -94,33 +96,9 @@ public class Interface_Earth extends Application {
                             // Afficher une sphère rouge sur l'aéroport le plus proche
                             earth.displayRedSphere(nearestAirport);
 
-                            // Récupération des données de l'API
-                            ApiFlightManager apiManager = new ApiFlightManager();
-                            String jsonResponse = apiManager.fetchFlightData(nearestAirport);
-
-                            System.out.println("Réponse JSON brute : " + jsonResponse);
-
-                            if (jsonResponse != null && !jsonResponse.isEmpty()) {
-                                // Analyse et remplissage des vols dynamiquement
-                                JsonFlightFillerOracle filler = new JsonFlightFillerOracle("", world);
-                                filler.fillFlightsFromApi(jsonResponse); // Appel explicite à fillFlightsFromApi
-
-                                earth.clearYellowBalls(); // Nettoyer les anciens points jaunes
-
-                                // Affichage des boules jaunes pour les aéroports de départ
-                                for (Flight flight : filler.getList()) {
-                                    System.out.println("Traitement du vol : " + flight);
-                                    Aeroport departure = world.findByCode(flight.getDepartureIATA());
-                                    if (departure != null) {
-                                        System.out.println("Aéroport trouvé pour le code IATA " + flight.getDepartureIATA() + " : " + departure);
-                                        earth.displayYellowBall(departure);
-                                    } else {
-                                        System.out.println("Aucun aéroport trouvé pour le code IATA : " + flight.getDepartureIATA());
-                                    }
-                                }
-                            } else {
-                                System.out.println("Erreur : Impossible de récupérer les données de l'API.");
-                            }
+                            // Lancer un thread pour exécuter YellowBallUpdater
+                            Thread updaterThread = new Thread(new YellowBallUpdater(earth, nearestAirport, world));
+                            updaterThread.start();
                         } else {
                             System.out.println("Aucun aéroport trouvé à proximité.");
                         }
