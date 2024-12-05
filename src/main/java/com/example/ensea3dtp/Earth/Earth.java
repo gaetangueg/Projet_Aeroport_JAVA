@@ -10,6 +10,8 @@ import javafx.scene.transform.Rotate;
 import com.example.ensea3dtp.Aeroport.Aeroport;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Earth extends Group {
 
@@ -121,4 +123,20 @@ public class Earth extends Group {
         currentRedSphere = createSphere(a, Color.RED);
         earthGroup.getChildren().add(currentRedSphere); // Ajouter la sphère rouge au groupe Terre
     }
+
+    private final List<Sphere> yellowSpheres = new ArrayList<>();
+
+    public void clearYellowBalls() {
+        for (Sphere sphere : yellowSpheres) {
+            earthGroup.getChildren().remove(sphere);
+        }
+        yellowSpheres.clear();
+    }
+
+    public void displayYellowBall(Aeroport aeroport) {
+        Sphere yellowSphere = createSphere(aeroport, Color.YELLOW);
+        earthGroup.getChildren().add(yellowSphere);
+        yellowSpheres.add(yellowSphere);
+    }
+
 }

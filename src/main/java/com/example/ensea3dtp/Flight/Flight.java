@@ -8,24 +8,32 @@ public class Flight {
     private LocalDateTime arrivalTime;// Heure d'arrivée prévue
     private LocalDateTime departureTime;// Heure de départ prévue
     private int number;// Numéro du vol
+    private String departureIATA; // Code IATA de l'aéroport de départ
 
     // Constructeur
-    public Flight(String airLineCode, String airlineName, LocalDateTime departureTime, LocalDateTime arrivalTime, int number) {
+    public Flight(String airLineCode, String airlineName, LocalDateTime departureTime, LocalDateTime arrivalTime, int number,String departureIATA) {
         this.airLineCode = airLineCode;
         this.airlineName = airlineName;
         this.departureTime = departureTime;
         this.arrivalTime = arrivalTime;
         this.number = number;
+        this.departureIATA = departureIATA;
     }
 
     // Méthode getArrival()
     public LocalDateTime getArrival() {
+
         return arrivalTime;
     }
 
     // Méthode getDeparture()
     public LocalDateTime getDeparture() {
+
         return departureTime;
+    }
+    public String getDepartureIATA() {
+
+        return departureIATA;
     }
 
     // Surcharge de la méthode toString pour afficher les informations du vol
@@ -37,7 +45,9 @@ public class Flight {
                 ", arrivalTime=" + arrivalTime +
                 ", departureTime=" + departureTime +
                 ", number=" + number +
+                ", departureIATA='" + departureIATA + '\'' +
                 '}';
     }
 }
+
 
