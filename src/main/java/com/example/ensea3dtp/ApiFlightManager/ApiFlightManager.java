@@ -14,7 +14,7 @@ import java.io.StringReader;
 public class ApiFlightManager {
 
     private static final String BASE_URL = "https://api.aviationstack.com/v1/flights";
-    private static final String ACCESS_KEY = "4c988bd4d2e8188b707c33050e2835d3";
+    private static final String ACCESS_KEY = "0dccca18cc78cd85d2f96d5770584ff5";
 
     public String fetchFlightData(Aeroport arrival) {
         try {
